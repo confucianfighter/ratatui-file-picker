@@ -22,5 +22,6 @@ pub enum Input {
     /// [crossterm](https://docs.rs/crossterm/latest/crossterm/event/enum.Event.html),
     /// [termion](https://docs.rs/termion/latest/termion/event/enum.Event.html) and
     /// [termwiz](https://docs.rs/termwiz/latest/termwiz/input/enum.InputEvent.html) to [`Input`]).
+    Space,
     None,
 }

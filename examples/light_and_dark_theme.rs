@@ -10,7 +10,7 @@ use ratatui::{
     widgets::{Block, BorderType, Borders},
 };
 
-use ratatui_explorer::{FileExplorer, Theme};
+use ratatui_file_picker::{FileExplorer, Theme};
 
 fn main() -> io::Result<()> {
     enable_raw_mode()?;

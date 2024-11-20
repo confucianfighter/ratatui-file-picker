@@ -23,7 +23,9 @@ impl WidgetRef for Renderer<'_> {
 
         let highlight_style = if self.0.current().is_dir() {
             self.0.theme().highlight_dir_style
-        } else {
+        }
+        // else if current
+        else {
             self.0.theme().highlight_item_style
         };
 
@@ -58,6 +60,12 @@ impl File {
     fn text(&self, theme: &Theme) -> Text<'_> {
         let style = if self.is_dir() {
             *theme.dir_style()
+        } else if self.is_selected() {
+            // create new style that is purple and bold
+            let mut style = theme.item_style().clone();
+            style.fg = Some(Color::Magenta);
+            style.add_modifier(ratatui::style::Modifier::BOLD);
+            style
         } else {
             *theme.item_style()
         };

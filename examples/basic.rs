@@ -1,13 +1,12 @@
 use std::io::{self, stdout};
-
+use std::process;
 use crossterm::{
     event::{read, Event, KeyCode},
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
     ExecutableCommand,
 };
 use ratatui::prelude::*;
-
-use ratatui_explorer::{FileExplorer, Theme};
+use ratatui_file_picker::{FileExplorer, Theme};
 
 fn main() -> io::Result<()> {
     enable_raw_mode()?;
@@ -19,6 +18,8 @@ fn main() -> io::Result<()> {
     let theme = Theme::default().add_default_title();
     let mut file_explorer = FileExplorer::with_theme(theme)?;
 
+    let mut selected_paths = vec![];
+
     loop {
         // Render the file explorer widget.
         terminal.draw(|f| {
@@ -29,6 +30,12 @@ fn main() -> io::Result<()> {
         let event = read()?;
         if let Event::Key(key) = event {
             if key.code == KeyCode::Char('q') {
+                // Collect selected file paths.
+                selected_paths = file_explorer
+                    .selected_files()
+                    .iter()
+                    .map(|file| file.path().display().to_string())
+                    .collect();
                 break;
             }
         }
@@ -36,7 +43,15 @@ fn main() -> io::Result<()> {
         file_explorer.handle(&event)?;
     }
 
+    // Restore the terminal to normal mode.
     disable_raw_mode()?;
     stdout().execute(LeaveAlternateScreen)?;
-    Ok(())
+
+    // Print the selected file paths to stdout.
+    for path in selected_paths {
+        println!("{}", path);
+    }
+
+    // Return exit code 0 explicitly.
+    process::exit(0);
 }

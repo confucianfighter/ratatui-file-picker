@@ -1,9 +1,9 @@
 [package]
-name = "ratatui-explorer"
+name = "ratatui-file-picker"
 version = "0.1.2"
 edition = "2021"
-authors = ["Tatounee"]
-description = "ratatui-explorer is a small, but highly customizable, file explorer widget for ratatui."
+authors = ["Daylan Nance"]
+description = "ratatui-file-picker allows you to select multiple files from a tree and add their content or paths to clipboard. It also returns the absolute paths of selected files on exit."
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/tatounee/ratatui-explorer"
@@ -20,6 +20,7 @@ termwiz = { version = "0.22", optional = true }
 
 ratatui = { version = "0.28.1", features = ["unstable-widget-ref"] }
 derivative = "2.2"
+copypasta = "0.10.1"
 
 [features]
 default = ["crossterm"]

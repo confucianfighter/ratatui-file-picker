@@ -1,6 +1,13 @@
-# ratatui-file-picker
-A modified clone of ratatui-explorer
+Path: C:\Daylan\ratatui-explorer\.git
+Content:
 
+
+Path: C:\Daylan\ratatui-explorer\examples
+Content:
+
+
+Path: C:\Daylan\ratatui-explorer\README.md
+Content:
 # ratatui-explorer
 
 [ratatui-explorer](https://crates.io/crates/ratatui-explorer) is a simple library for creating file explorers for [ratatui](https://github.com/ratatui-org/ratatui).
@@ -126,3 +133,4 @@ The following bindings are used by default for [crossterm](https://docs.rs/cross
 | `l`, `<RightArrow>`, `<Enter>`    | Go to the child directory* |
 
 _*if the selected item is a directory_
+

@@ -17,6 +17,7 @@ impl From<&Event> for Input {
                     KeyCode::Char('k') | KeyCode::Up => Input::Up,
                     KeyCode::Char('h') | KeyCode::Left | KeyCode::Backspace => Input::Left,
                     KeyCode::Char('l') | KeyCode::Right | KeyCode::Enter => Input::Right,
+                    KeyCode::Char(' ') => Input::Space,
                     _ => Input::None,
                 };
 

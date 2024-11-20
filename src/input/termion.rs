@@ -13,6 +13,7 @@ impl From<&Event> for Input {
                 Key::Char('k') | Key::Up => Input::Up,
                 Key::Char('h') | Key::Left | Key::Backspace => Input::Left,
                 Key::Char('l') | Key::Right | Key::Char('\n') => Input::Right,
+                Key::Char(' ') => Input::Space,
                 _ => Input::None,
             },
             _ => Input::None,

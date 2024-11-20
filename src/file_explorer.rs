@@ -54,6 +54,7 @@ pub struct FileExplorer {
     files: Vec<File>,
     selected: usize,
     theme: Theme,
+    selected_files: Vec<File>,
 }
 
 impl FileExplorer {
@@ -85,6 +86,7 @@ impl FileExplorer {
             files: vec![],
             selected: 0,
             theme: Theme::default(),
+            selected_files: vec![],
         };
 
         file_explorer.get_and_set_files()?;
@@ -217,6 +219,22 @@ impl FileExplorer {
                     self.selected = 0
                 }
             }
+            Input::Space => {
+                // check if self.selected is in self.selected_files
+                // if it's there remove it
+                // else add it
+                let current_index = self.selected;
+                let current = &mut self.files[current_index];
+                if current.is_selected() {
+                    // If already selected, deselect
+                    self.selected_files.retain(|x| x.path != current.path);
+                    current.set_selected(false);
+                } else {
+                    // If not selected, select
+                    self.selected_files.push(current.clone());
+                    current.set_selected(true);
+                }
+            }
             Input::None => (),
         }
 
@@ -242,6 +260,10 @@ impl FileExplorer {
         self.selected = 0;
 
         Ok(())
+    }
+    #[inline]
+    pub fn selected_files(&self) -> &Vec<File> {
+        &self.selected_files.as_ref()
     }
 
     /// Sets the theme of the file explorer.
@@ -457,8 +479,15 @@ impl FileExplorer {
                     } else {
                         e.file_name().to_string_lossy().into_owned()
                     };
+                    // if path is in selected_files, set is_selected to true
+                    let is_selected = self.selected_files.iter().any(|x| x.path == path);
 
-                    File { name, path, is_dir }
+                    File {
+                        name,
+                        path,
+                        is_dir,
+                        is_selected,
+                    }
                 })
             })
             .partition(|file| file.is_dir);
@@ -468,11 +497,11 @@ impl FileExplorer {
 
         if let Some(parent) = self.cwd.parent() {
             let mut files = Vec::with_capacity(1 + dirs.len() + none_dirs.len());
-
             files.push(File {
                 name: "../".to_owned(),
                 path: parent.to_path_buf(),
                 is_dir: true,
+                is_selected: false,
             });
 
             files.extend(dirs);
@@ -498,6 +527,7 @@ pub struct File {
     name: String,
     path: PathBuf,
     is_dir: bool,
+    is_selected: bool,
 }
 
 impl File {
@@ -585,5 +615,13 @@ impl File {
     #[inline]
     pub const fn is_dir(&self) -> bool {
         self.is_dir
+    }
+    #[inline]
+    pub fn set_selected(&mut self, selected: bool) {
+        self.is_selected = selected;
+    }
+    #[inline]
+    pub const fn is_selected(&self) -> bool {
+        self.is_selected
     }
 }
