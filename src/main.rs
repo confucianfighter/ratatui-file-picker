@@ -19,6 +19,7 @@ fn main() -> io::Result<()> {
     let path = std::env::args().nth(1).unwrap_or_else(|| ".".to_string());
     // change cwd to path
     std::env::set_current_dir(&path).unwrap();
+    let mut print_contents: bool = false;
     enable_raw_mode()?;
     stdout().execute(EnterAlternateScreen)?;
 
@@ -65,7 +66,7 @@ fn main() -> io::Result<()> {
             f.render_widget(
                 Paragraph::new(selected_files.clone()).block(
                     Block::default().borders(Borders::ALL).title(
-                        "<q> Quit | <c> Copy Files to Clipboard | <p> Copy Paths to Clipboard",
+                        "<q> Quit(prints paths) | <c> Copy Files to Clipboard | <p> Copy Paths to Clipboard | <t> Files to stdout",
                     ),
                 ),
                 chunks[1],
@@ -86,7 +87,7 @@ fn main() -> io::Result<()> {
                             eprintln!("Failed to copy to clipboard: {}", err);
                         }
                     } else {
-                        eprintln!("Clipboard not available.");
+                        eprintln!("Clipboard not available. Press <t> to print to stdout.");
                     }
                 }
                 KeyCode::Char('p') => {
@@ -98,6 +99,16 @@ fn main() -> io::Result<()> {
                     } else {
                         eprintln!("Clipboard not available.");
                     }
+                }
+                KeyCode::Char('t') => {
+                    // Print selected file paths to stdout
+                    disable_raw_mode()?;
+                    stdout().execute(LeaveAlternateScreen)?;
+                    // Print the selected file contents to stdout.
+                    let selected_files_content = get_selected_files_content(&file_explorer.selected_files());
+                    println!("{}", selected_files_content);
+                    // do early successful exit of program
+                    std::process::exit(0);
                 }
                 _ => {}
             }
