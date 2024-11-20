@@ -1,6 +1,6 @@
 [package]
 name = "fpicker"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["Daylan Nance"]
 description = "ratatui-file-picker allows you to select multiple files from a tree and add their content or paths to clipboard. It also returns the absolute paths of selected files on exit."

@@ -59,10 +59,17 @@ impl File {
     /// Returns the text with the appropriate style to be displayed for the file.
     fn text(&self, theme: &Theme) -> Text<'_> {
         let style = if self.is_dir() {
-            let mut style = theme.item_style().clone();
-            style.fg = Some(Color::Blue);
-            style.add_modifier(ratatui::style::Modifier::BOLD);
-            style
+            if self.is_selected() {
+                let mut style = theme.highlight_dir_style.clone();
+                style.add_modifier(ratatui::style::Modifier::BOLD);
+                style.fg(Color::Yellow);
+                style
+            } else {
+                let mut style = theme.item_style().clone();
+                style.fg = Some(Color::Blue);
+                style.add_modifier(ratatui::style::Modifier::BOLD);
+                style
+            }
         } else if self.is_selected() {
             // create new style that is purple and bold
             let mut style = theme.item_style().clone();

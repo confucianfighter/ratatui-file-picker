@@ -64,9 +64,9 @@ fn main() -> io::Result<()> {
             // Bottom section
             f.render_widget(
                 Paragraph::new(selected_files.clone()).block(
-                    Block::default()
-                        .borders(Borders::ALL)
-                        .title("q:Quit, c: copy selected file contents to clipboard, p: copy paths to clipboard"),
+                    Block::default().borders(Borders::ALL).title(
+                        "<q> Quit | <c> Copy Files to Clipboard | <p> Copy Paths to Clipboard",
+                    ),
                 ),
                 chunks[1],
             );
@@ -120,7 +120,10 @@ fn get_file_content(path: &Path) -> io::Result<String> {
 
     // If the path is a file, read its content.
     if path.is_file() {
-        content = read_to_string(path)?;
+        content = match read_to_string(path) {
+            Ok(content) => content,
+            Err(err) => format!("Unable to read file: {}", err),
+        };
     }
 
     Ok(content)
