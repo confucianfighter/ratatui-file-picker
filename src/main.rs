@@ -12,9 +12,13 @@ use crossterm::{
 use ratatui::{prelude::*, widgets::*};
 
 use copypasta::{ClipboardContext, ClipboardProvider};
-use ratatui_file_picker::{File, FileExplorer, Theme};
+use fpicker::{File, FileExplorer, Theme};
 
 fn main() -> io::Result<()> {
+    // grab first arg as path
+    let path = std::env::args().nth(1).unwrap_or_else(|| ".".to_string());
+    // change cwd to path
+    std::env::set_current_dir(&path).unwrap();
     enable_raw_mode()?;
     stdout().execute(EnterAlternateScreen)?;
 

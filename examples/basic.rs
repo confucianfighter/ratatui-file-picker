@@ -6,7 +6,7 @@ use crossterm::{
     ExecutableCommand,
 };
 use ratatui::prelude::*;
-use ratatui_file_picker::{FileExplorer, Theme};
+use fpicker::{FileExplorer, Theme};
 
 fn main() -> io::Result<()> {
     enable_raw_mode()?;

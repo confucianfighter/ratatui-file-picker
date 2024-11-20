@@ -63,7 +63,7 @@ use crossterm::{
 };
 use ratatui::prelude::*;
 
-use ratatui_explorer::{FileExplorer, Theme};
+use fpicker::{FileExplorer, Theme};
 
 fn main() -> io::Result<()> {
     enable_raw_mode()?;
@@ -102,7 +102,7 @@ fn main() -> io::Result<()> {
 You can customize the theme of the file explorer widget by using the `Theme` struct.
 ```rust
 use ratatui::{prelude::*, widgets::*};
-use ratatui_explorer::Theme;
+use fpicker::Theme;
 
 let theme = Theme::default()
     .add_default_title()

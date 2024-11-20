@@ -17,7 +17,7 @@ use crate::{input::Input, widget::Renderer, Theme};
 /// Creating a new `FileExplorer` widget:
 ///
 /// ```no_run
-/// use ratatui_explorer::FileExplorer;
+/// use fpicker::FileExplorer;
 ///
 /// let file_explorer = FileExplorer::new().unwrap();
 /// let widget = file_explorer.widget();
@@ -26,10 +26,10 @@ use crate::{input::Input, widget::Renderer, Theme};
 /// Handling user input:
 ///
 /// ```no_run
-/// # fn get_event() -> ratatui_explorer::Input {
+/// # fn get_event() -> fpicker::Input {
 /// #   unimplemented!()
 /// # }
-/// use ratatui_explorer::FileExplorer;
+/// use fpicker::FileExplorer;
 ///
 /// let mut file_explorer = FileExplorer::new().unwrap();
 /// let event = get_event(); // Get the event from the terminal (with crossterm, termion or termwiz)
@@ -39,7 +39,7 @@ use crate::{input::Input, widget::Renderer, Theme};
 /// Accessing information about the current file selected and or the current working directory:
 ///
 /// ```no_run
-/// use ratatui_explorer::FileExplorer;
+/// use fpicker::FileExplorer;
 ///
 /// let file_explorer = FileExplorer::new().unwrap();
 ///
@@ -73,7 +73,7 @@ impl FileExplorer {
     /// ```
     /// You can create a new `FileExplorer` like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     /// assert_eq!(file_explorer.cwd().display().to_string(), "/Documents");
@@ -101,7 +101,7 @@ impl FileExplorer {
     /// # Examples
     ///
     /// ```no_run
-    /// use ratatui_explorer::{FileExplorer, Theme};
+    /// use fpicker::{FileExplorer, Theme};
     ///
     /// let file_explorer = FileExplorer::with_theme(Theme::default().add_default_title()).unwrap();
     /// ```
@@ -121,7 +121,7 @@ impl FileExplorer {
     ///
     /// ```no_run
     /// use ratatui::{Terminal, backend::CrosstermBackend};
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let mut file_explorer = FileExplorer::new().unwrap();
     ///
@@ -166,7 +166,7 @@ impl FileExplorer {
     /// ```
     /// You can handle input like this:
     /// ```no_run
-    /// use ratatui_explorer::{FileExplorer, Input};
+    /// use fpicker::{FileExplorer, Input};
     ///
     /// let mut file_explorer = FileExplorer::new().unwrap();
     ///
@@ -246,7 +246,7 @@ impl FileExplorer {
     /// # Examples
     ///
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let mut file_explorer = FileExplorer::new().unwrap();
     ///
@@ -271,7 +271,7 @@ impl FileExplorer {
     /// # Examples
     ///
     /// ```no_run
-    /// use ratatui_explorer::{FileExplorer, Theme};
+    /// use fpicker::{FileExplorer, Theme};
     ///
     /// let mut file_explorer = FileExplorer::new().unwrap();
     ///
@@ -306,7 +306,7 @@ impl FileExplorer {
     /// ```
     /// You can set the selected index like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let mut file_explorer = FileExplorer::new().unwrap();
     ///
@@ -347,7 +347,7 @@ impl FileExplorer {
     /// ```
     /// You can get the current file like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -375,7 +375,7 @@ impl FileExplorer {
     /// ```
     /// You can get the current working directory like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -404,7 +404,7 @@ impl FileExplorer {
     /// ```
     /// You can get the [`Vec`](https://doc.rust-lang.org/stable/std/vec/struct.Vec.html) of files and directories like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -433,7 +433,7 @@ impl FileExplorer {
     /// ```
     /// You can get the selected index like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -455,7 +455,7 @@ impl FileExplorer {
     /// # Examples
     ///
     /// ```no_run
-    /// use ratatui_explorer::{FileExplorer, Theme};
+    /// use fpicker::{FileExplorer, Theme};
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -544,7 +544,7 @@ impl File {
     /// ```
     /// You can get the name of the selected file like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -571,7 +571,7 @@ impl File {
     /// ```
     /// You can get the path of the selected file like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///
@@ -598,7 +598,7 @@ impl File {
     /// ```
     /// You can know if the selected file is a directory like this:
     /// ```no_run
-    /// use ratatui_explorer::FileExplorer;
+    /// use fpicker::FileExplorer;
     ///
     /// let file_explorer = FileExplorer::new().unwrap();
     ///

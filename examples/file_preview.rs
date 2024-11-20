@@ -12,7 +12,7 @@ use crossterm::{
 use ratatui::{prelude::*, widgets::*};
 
 use copypasta::{ClipboardContext, ClipboardProvider};
-use ratatui_file_picker::{File, FileExplorer, Theme};
+use fpicker::{File, FileExplorer, Theme};
 
 fn main() -> io::Result<()> {
     enable_raw_mode()?;

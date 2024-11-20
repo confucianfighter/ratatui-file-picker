@@ -397,6 +397,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
+name = "fpicker"
+version = "0.1.2"
+dependencies = [
+ "copypasta",
+ "crossterm",
+ "derivative",
+ "ratatui",
+ "termion",
+ "termwiz",
+]
+
+[[package]]
 name = "generic-array"
 version = "0.14.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -976,18 +988,6 @@ dependencies = [
  "unicode-segmentation",
  "unicode-truncate",
  "unicode-width",
-]
-
-[[package]]
-name = "ratatui-file-picker"
-version = "0.1.2"
-dependencies = [
- "copypasta",
- "crossterm",
- "derivative",
- "ratatui",
- "termion",
- "termwiz",
 ]
 
 [[package]]

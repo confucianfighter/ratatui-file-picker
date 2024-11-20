@@ -1,14 +1,14 @@
 [package]
-name = "ratatui-file-picker"
+name = "fpicker"
 version = "0.1.2"
 edition = "2021"
 authors = ["Daylan Nance"]
 description = "ratatui-file-picker allows you to select multiple files from a tree and add their content or paths to clipboard. It also returns the absolute paths of selected files on exit."
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/tatounee/ratatui-explorer"
-repository = "https://github.com/tatounee/ratatui-explorer.git"
-keywords = ["tui", "ratatui", "terminal", "file", "explorer"]
+homepage = " https://github.com/confucianfighter/ratatui-file-picker.git"
+repository = "https://github.com/confucianfighter/ratatui-file-picker.git"
+keywords = ["picker","tui", "ratatui", "terminal", "file", "explorer"]
 categories = ["command-line-interface", "filesystem"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -30,3 +30,6 @@ termwiz = ["dep:termwiz"]
 
 [package.metadata.docs.rs]
 cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
+[[bin]]
+name = "fpicker"
+path = "src/main.rs"
