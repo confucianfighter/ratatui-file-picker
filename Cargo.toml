@@ -8,7 +8,7 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/confucianfighter/ratatui-file-picker.git"
 repository = "https://github.com/confucianfighter/ratatui-file-picker.git"
-keywords = ["picker","tui", "ratatui", "terminal", "file", "explorer"]
+keywords = ["picker", "ratatui", "terminal", "file", "explorer"]
 categories = ["command-line-interface", "filesystem"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
